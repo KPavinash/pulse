@@ -1,0 +1,141 @@
+
+> temp_app@0.1.0 build
+> next build
+
+ΓÜá Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\avina\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\avina\OneDrive\Desktop\Project X\package-lock.json
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./OneDrive/Desktop/Project X/tailwind.config.ts:90:15
+Module not found: Can't resolve 'tailwindcss-animate'
+  88 |         },
+  89 |     },
+> 90 |     plugins: [require("tailwindcss-animate")],
+     |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  91 | };
+  92 | export default config;
+  93 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+> Build error occurred
+Error: Turbopack build failed with 4 errors:
+./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx:3:1
+Export FixedSizeGrid doesn't exist in target module
+  1 | "use client"
+  2 |
+> 3 | import { FixedSizeGrid } from "react-window";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | // @ts-ignore
+  5 | import AutoSizer from "react-virtualized-auto-sizer";
+  6 | import { motion } from "framer-motion";
+
+The export FixedSizeGrid was not found in module [project]/OneDrive/Desktop/Project X/node_modules/react-window/dist/react-window.js [app-client] (ecmascript).
+Did you mean to import Grid?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx [Client Component Browser]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx [Client Component SSR]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Server Component]
+
+
+./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx:3:1
+Export FixedSizeGrid doesn't exist in target module
+  1 | "use client"
+  2 |
+> 3 | import { FixedSizeGrid } from "react-window";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | // @ts-ignore
+  5 | import AutoSizer from "react-virtualized-auto-sizer";
+  6 | import { motion } from "framer-motion";
+
+The export FixedSizeGrid was not found in module [project]/OneDrive/Desktop/Project X/node_modules/react-window/dist/react-window.js [app-ssr] (ecmascript).
+Did you mean to import Grid?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx [Client Component Browser]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx [Client Component SSR]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Server Component]
+
+
+./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx:5:1
+Export default doesn't exist in target module
+  3 | import { FixedSizeGrid } from "react-window";
+  4 | // @ts-ignore
+> 5 | import AutoSizer from "react-virtualized-auto-sizer";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { motion } from "framer-motion";
+  7 | import { User } from "@/lib/dummyData"
+  8 | import Image from "next/image"
+
+The export default was not found in module [project]/OneDrive/Desktop/Project X/node_modules/react-virtualized-auto-sizer/dist/react-virtualized-auto-sizer.js [app-client] (ecmascript).
+Did you mean to import AutoSizer?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx [Client Component Browser]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx [Client Component SSR]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Server Component]
+
+
+./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx:5:1
+Export default doesn't exist in target module
+  3 | import { FixedSizeGrid } from "react-window";
+  4 | // @ts-ignore
+> 5 | import AutoSizer from "react-virtualized-auto-sizer";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { motion } from "framer-motion";
+  7 | import { User } from "@/lib/dummyData"
+  8 | import Image from "next/image"
+
+The export default was not found in module [project]/OneDrive/Desktop/Project X/node_modules/react-virtualized-auto-sizer/dist/react-virtualized-auto-sizer.js [app-ssr] (ecmascript).
+Did you mean to import AutoSizer?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx [Client Component Browser]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Client Component Browser]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx [Client Component SSR]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Client Component SSR]
+    ./OneDrive/Desktop/Project X/src/app/page.tsx [Server Component]
+
+
+    at <unknown> (./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx:3:1)
+    at <unknown> (./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx:3:1)
+    at <unknown> (./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx:5:1)
+    at <unknown> (./OneDrive/Desktop/Project X/src/components/grid/PulseGrid.tsx:5:1)

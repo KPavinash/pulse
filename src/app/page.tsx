@@ -1,64 +1,97 @@
-import Image from "next/image";
+"use client"
+
+import { useState, useMemo } from "react";
+import { useNearbyUsers } from "@/hooks/useNearbyUsers";
+import { PulseGrid } from "@/components/grid/PulseGrid";
+import { DiscoveryHeader } from "@/components/home/DiscoveryHeader";
+import { PulseRail } from "@/components/home/PulseRail";
+import { HeatPill } from "@/components/home/HeatPill";
 
 export default function Home() {
+  const { users, loading } = useNearbyUsers();
+
+  // State for Filters
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState("All Nearby");
+  const [showOnlineOnly, setShowOnlineOnly] = useState(false);
+
+  // Filter Logic
+  const filteredUsers = useMemo(() => {
+    let result = users;
+
+    // 1. Search Filter
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter(u =>
+        u.username.toLowerCase().includes(q) ||
+        u.role.toLowerCase().includes(q) ||
+        u.bio.toLowerCase().includes(q)
+      );
+    }
+
+    // 2. Toggle "Online Only"
+    if (showOnlineOnly) {
+      result = result.filter(u => u.isOnline);
+    }
+
+    // 3. Category Filters
+    switch (activeFilter) {
+      case "Online Now":
+        result = result.filter(u => u.isOnline);
+        break;
+      case "New":
+        result = result.filter(u => u.isNew);
+        break;
+      case "Verified":
+        result = result.filter(u => u.isVerified);
+        break;
+      case "Events":
+        result = result.filter(u => u.isEvent);
+        break;
+      default:
+        break;
+    }
+
+    return result;
+
+  }, [users, searchQuery, activeFilter, showOnlineOnly]);
+
+  if (loading) return <div className="flex items-center justify-center min-h-screen text-brand-primary animate-pulse font-mono tracking-widest text-xs">INITIALIZING SYSTEM...</div>
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen w-full bg-black text-white overflow-hidden relative selection:bg-brand-primary/30">
+      {/* Background: Dark Cyberpunk City */}
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center pointer-events-none opacity-60"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1515630278258-407f66498911?q=80&w=1974&auto=format&fit=crop')", // Cyberpunk neon city
+          filter: "blur(4px) brightness(0.6) contrast(1.2)"
+        }}
+      />
+      {/* Neon Streaks/Glows */}
+      <div className="fixed top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-purple-900/40 via-blue-900/20 to-transparent pointer-events-none" />
+      <div className="fixed bottom-0 right-0 w-[300px] h-[300px] bg-brand-primary/20 blur-[100px] pointer-events-none rounded-full" />
+
+      <main className="relative z-10 flex flex-col h-screen overflow-hidden">
+        {/* Fixed Header & Rail Area */}
+        <div className="flex-none bg-gradient-to-b from-black/90 via-black/80 to-transparent pb-4">
+          <DiscoveryHeader
+            onSearch={setSearchQuery}
+            activeFilter={activeFilter}
+            onFilterChange={setActiveFilter}
+            showOnlineOnly={showOnlineOnly}
+            onToggleOnline={() => setShowOnlineOnly(!showOnlineOnly)}
+          />
+          <PulseRail />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Scrollable Grid Area */}
+        <div className="flex-1 overflow-hidden relative">
+          <PulseGrid users={filteredUsers} />
         </div>
+
+        {/* Floating Heat Pill */}
+        <HeatPill />
       </main>
     </div>
   );
