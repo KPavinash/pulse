@@ -61,10 +61,10 @@ const config: Config = {
                     ring: "hsl(var(--sidebar-ring))",
                 },
                 brand: {
-                    primary: "#a855f7", // Electric Purple
-                    secondary: "#3b82f6", // Electric Blue
+                    primary: "var(--primary)", // Adapts to theme (Lime/Purple)
+                    secondary: "var(--secondary)", // Adapts to theme (Pink/Blue)
                     dark: "#0a0a0a", // Deep Black
-                    glass: "rgba(255, 255, 255, 0.1)", // Glassmorphism base
+                    glass: "var(--glass-bg)", // Adapts to theme
                 },
             },
             borderRadius: {

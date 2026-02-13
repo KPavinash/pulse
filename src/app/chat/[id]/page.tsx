@@ -58,12 +58,12 @@ export default function ChatDetailPage() {
     }
 
     return (
-        <div className="flex flex-col h-screen bg-black text-white relative overflow-hidden">
-            {/* Background Effects */}
-            <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-black to-black pointer-events-none" />
+        <div className="flex flex-col h-screen bg-background text-foreground relative overflow-hidden">
+            {/* Background Effects: Hidden for Vibrant Solid Theme */}
+            <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-black to-black pointer-events-none hidden dark:block" />
 
-            {/* Floating Glass Header */}
-            <div className="absolute top-4 left-4 right-4 z-20 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-2 flex items-center justify-between shadow-2xl">
+            {/* Floating Header (Solid in Light) */}
+            <div className="absolute top-4 left-4 right-4 z-20 bg-[#4e3fd6] dark:bg-white/5 dark:backdrop-blur-xl border border-[#5d4ce6] dark:border-white/10 rounded-2xl p-2 flex items-center justify-between shadow-2xl">
                 <div className="flex items-center gap-2">
                     <button onClick={() => router.back()} className="p-2 hover:bg-white/10 rounded-full transition-colors">
                         <ArrowLeft className="w-5 h-5 text-gray-200" />
@@ -123,9 +123,9 @@ export default function ChatDetailPage() {
                                     </div>
                                 )}
 
-                                <div className={`max-w-[75%] shadow-lg backdrop-blur-sm ${msg.isMe
-                                    ? 'bg-gradient-to-br from-brand-primary to-brand-secondary text-white rounded-2xl rounded-tr-sm'
-                                    : 'bg-white/10 border border-white/5 text-gray-100 rounded-2xl rounded-tl-sm'
+                                <div className={`max-w-[75%] shadow-lg ${msg.isMe
+                                    ? 'bg-[#d4ff4f] text-[#382bf0] dark:bg-gradient-to-br dark:from-brand-primary dark:to-brand-secondary dark:text-white rounded-2xl rounded-tr-sm'
+                                    : 'bg-[#4e3fd6] dark:bg-white/10 border border-[#5d4ce6] dark:border-white/5 text-white dark:text-gray-100 rounded-2xl rounded-tl-sm'
                                     }`}>
                                     {msg.image && (
                                         <div className="rounded-t-2xl overflow-hidden relative w-full aspect-[4/5] min-w-[200px]">
@@ -134,7 +134,7 @@ export default function ChatDetailPage() {
                                     )}
                                     <div className={`px-4 py-2 ${msg.image ? 'pt-2' : ''}`}>
                                         <p className="text-[15px] leading-relaxed">{msg.text}</p>
-                                        <span className={`text-[10px] block text-right mt-1 ${msg.isMe ? 'text-white/70' : 'text-gray-400'}`}>
+                                        <span className={`text-[10px] block text-right mt-1 ${msg.isMe ? 'text-[#382bf0]/70 dark:text-white/70' : 'text-white/50 dark:text-gray-400'}`}>
                                             {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                         </span>
                                     </div>
@@ -148,7 +148,7 @@ export default function ChatDetailPage() {
 
             {/* Floating Input Area */}
             <div className="p-4 z-20">
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 shadow-2xl">
+                <div className="flex items-center gap-2 bg-[#4e3fd6] dark:bg-white/10 dark:backdrop-blur-xl border border-[#5d4ce6] dark:border-white/10 rounded-full px-2 py-2 shadow-2xl">
                     <button className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-brand-primary transition-colors">
                         <ImageIcon className="w-5 h-5" />
                     </button>
@@ -163,9 +163,9 @@ export default function ChatDetailPage() {
                     <button
                         onClick={handleSend}
                         disabled={!inputText.trim()}
-                        className="p-2.5 rounded-full bg-brand-primary text-black disabled:opacity-50 disabled:scale-95 disabled:cursor-not-allowed hover:scale-105 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all"
+                        className="p-2.5 rounded-full bg-[#d4ff4f] dark:bg-brand-primary text-[#382bf0] dark:text-black disabled:opacity-50 disabled:scale-95 disabled:cursor-not-allowed hover:scale-105 hover:shadow-md transition-all"
                     >
-                        <Send className="w-4 h-4 fill-black" />
+                        <Send className="w-4 h-4 fill-[#382bf0] dark:fill-black" />
                     </button>
                 </div>
             </div>

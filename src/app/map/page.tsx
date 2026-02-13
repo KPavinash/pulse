@@ -20,8 +20,8 @@ export default function MapPage() {
     const displayUsers = users.slice(0, 40);
 
     return (
-        <div className="w-full h-screen bg-black relative">
-            <div className="absolute top-4 left-4 z-10 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
+        <div className="w-full h-screen bg-background relative">
+            <div className="absolute top-4 left-4 z-10 bg-[#4e3fd6] dark:bg-black/60 dark:backdrop-blur-md px-4 py-2 rounded-xl border border-[#5d4ce6] dark:border-white/10">
                 <h1 className="text-xl font-bold text-white">Live Map</h1>
                 <p className="text-xs text-gray-400">Warsaw, Poland ({displayUsers.length} Users)</p>
             </div>

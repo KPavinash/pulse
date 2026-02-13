@@ -119,38 +119,119 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 }
 
-/* The "Dark Room" Background */
-body {
-  background-color: #050505;
-  background-image: 
+/* --- THEME DEFINITIONS --- */
+
+/* LIGHT MODE REBRAND -> "ZONA PRO SPEC" (Strict Palette) */
+:root {
+  /* --- Exact Palette from Image --- */
+
+  /* Primary Background: Deep Indigo (#371f7d) */
+  --bg-color: #371f7d;
+  --bg-image: none;
+
+  /* Text Colors */
+  --text-color: #ffffff;
+  --muted-color: #bc96ff;
+  /* Lilac as muted text */
+
+  /* Component Backgrounds */
+  --card: #3e2a86;
+  /* Slightly lighter than bg for hierarchy */
+  --card-foreground: #ffffff;
+
+  /* Primary Brand (Lime #d7ff81) */
+  --primary: #d7ff81;
+  --primary-foreground: #371f7d;
+  /* Indigo text on Lime */
+
+  /* Secondary Brand (Pink #ff4365) */
+  --secondary: #ff4365;
+  --secondary-foreground: #ffffff;
+
+  /* Accents */
+  --accent: #bc96ff;
+  /* Lilac */
+  --accent-foreground: #371f7d;
+
+  /* Destructive */
+  --destructive: #ff4365;
+
+  /* Solid Panel */
+  --glass-bg: #371f7d;
+  --glass-border: #bc96ff;
+  /* Lilac borders */
+  --glass-shadow: none;
+  --glass-blur: 0px;
+
+  /* Button Gradients REMOVED (Solid Colors) */
+  --btn-bg: #d7ff81;
+  /* Solid Lime */
+  --btn-shadow: 0 4px 0 #bc96ff;
+  /* Lilac offset shadow for pop */
+}
+
+/* Override base shadcn vars to match Vibrant Theme */
+:root {
+  --background: oklch(0.35 0.25 285);
+  --foreground: oklch(1 0 0);
+  --muted: oklch(0.6 0.2 285);
+  --muted-foreground: oklch(0.9 0.1 285);
+  --border: oklch(0.6 0.2 285);
+  --input: oklch(0.6 0.2 285);
+}
+
+/* DARK MODE ("Dark Room / Neon") */
+.dark {
+  /* Deep black with neon accents */
+  --bg-color: #050505;
+  --bg-image:
     radial-gradient(circle at 50% 0%, #1a1a2e 0%, transparent 60%),
     radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.05) 0%, transparent 40%);
-  color: #e0e0e0;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+
+  --text-color: #e0e0e0;
+
+  /* Neon Glass */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  --glass-blur: 16px;
+
+  --btn-bg: linear-gradient(90deg, #ff0f7b, #f89b29);
+  --btn-shadow: 0 0 15px rgba(255, 15, 123, 0.4);
 }
 
-/* The "Neon Glass" Class */
+/* --- APPLY THEME VARIABLES --- */
+
+body {
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  color: var(--text-color);
+}
+
+/* Glass Panel Class */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
-/* The "Haptic" Button */
+/* Neon/Haptic Button */
 .neon-button {
-  background: linear-gradient(90deg, #ff0f7b, #f89b29);
+  background: var(--btn-bg);
   border: none;
-  box-shadow: 0 0 15px rgba(255, 15, 123, 0.4);
+  box-shadow: var(--btn-shadow);
   color: white;
   text-transform: uppercase;
   letter-spacing: 1px;

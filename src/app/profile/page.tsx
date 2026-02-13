@@ -7,17 +7,18 @@ import { Button } from "@/components/ui/button"
 
 export default function ProfilePage() {
     return (
-        <div className="min-h-screen w-full bg-black text-white pb-24 overflow-x-hidden relative">
+        <div className="min-h-screen w-full bg-background text-foreground pb-24 overflow-x-hidden relative">
             {/* Background: Blurred Urban Cityscape */}
+            {/* Background: Hidden in Vibrant Theme (Solid only) - or keep dark mode only? */}
             <div
-                className="fixed inset-0 z-0 bg-cover bg-center opacity-60 pointer-events-none"
+                className="fixed inset-0 z-0 bg-cover bg-center opacity-60 pointer-events-none hidden dark:block"
                 style={{
                     backgroundImage: "url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop')", // Cityscape placeholder
                     filter: "blur(8px) brightness(0.4)"
                 }}
             />
             {/* Fallback gradient if image fails/loads slow */}
-            <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/80 via-purple-900/20 to-black pointer-events-none" />
+            <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/80 via-purple-900/20 to-black pointer-events-none hidden dark:block" />
 
             {/* Header */}
             <header className="relative z-10 flex justify-between items-center p-6 pt-8">
@@ -25,10 +26,10 @@ export default function ProfilePage() {
                     Profile
                 </h1>
                 <div className="flex gap-4">
-                    <Button size="icon" variant="ghost" className="rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-brand-primary hover:bg-white/20 hover:text-brand-primary shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                    <Button size="icon" variant="ghost" className="rounded-full bg-[#4e3fd6] dark:bg-white/10 dark:backdrop-blur-md border border-[#5d4ce6] dark:border-white/10 text-[#d4ff4f] dark:text-brand-primary hover:bg-[#5d4ce6] dark:hover:bg-white/20 shadow-md">
                         <Bell className="w-5 h-5" />
                     </Button>
-                    <Button size="icon" variant="ghost" className="rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white hover:bg-white/20 shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <Button size="icon" variant="ghost" className="rounded-full bg-[#4e3fd6] dark:bg-white/10 dark:backdrop-blur-md border border-[#5d4ce6] dark:border-white/10 text-white hover:bg-[#5d4ce6] dark:hover:bg-white/20 shadow-md">
                         <Settings className="w-5 h-5" />
                     </Button>
                 </div>
@@ -57,7 +58,7 @@ export default function ProfilePage() {
                     {/* Secondary Photos Column */}
                     <div className="flex flex-col gap-4 h-full">
                         {/* Variation 2: Lifestyle/Side Profile */}
-                        <div className="relative flex-1 rounded-[1.5rem] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm group">
+                        <div className="relative flex-1 rounded-[1.5rem] overflow-hidden border border-[#5d4ce6] dark:border-white/10 bg-[#4e3fd6] dark:bg-white/5 dark:backdrop-blur-sm group">
                             <Image
                                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop"
                                 alt="Side Profile"
@@ -66,7 +67,7 @@ export default function ProfilePage() {
                             />
                         </div>
                         {/* Variation 3: Artistic/Mood */}
-                        <div className="relative flex-1 rounded-[1.5rem] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm group">
+                        <div className="relative flex-1 rounded-[1.5rem] overflow-hidden border border-[#5d4ce6] dark:border-white/10 bg-[#4e3fd6] dark:bg-white/5 dark:backdrop-blur-sm group">
                             <Image
                                 src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1000&auto=format&fit=crop"
                                 alt="Artistic Shot"
@@ -103,7 +104,7 @@ export default function ProfilePage() {
                             <span
                                 key={tag}
                                 className={`
-                  px-4 py-1.5 rounded-full text-xs font-bold tracking-wider backdrop-blur-md border 
+                  px-4 py-1.5 rounded-full text-xs font-bold tracking-wider dark:backdrop-blur-md border 
                   ${i === 0 ? 'bg-brand-primary/20 border-brand-primary/50 text-brand-primary shadow-[0_0_10px_rgba(168,85,247,0.2)]' :
                                         i === 1 ? 'bg-brand-secondary/20 border-brand-secondary/50 text-brand-secondary shadow-[0_0_10px_rgba(59,130,246,0.2)]' :
                                             'bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.2)]'
@@ -122,7 +123,7 @@ export default function ProfilePage() {
                         <Sparkles className="w-5 h-5 text-brand-primary" />
                         <span className="drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]">About Me</span>
                     </h3>
-                    <div className="p-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-gray-300 leading-relaxed shadow-lg">
+                    <div className="p-5 rounded-2xl bg-[#4e3fd6] dark:bg-white/5 dark:backdrop-blur-md border border-[#5d4ce6] dark:border-white/10 text-white/90 dark:text-gray-300 leading-relaxed shadow-lg">
                         <p>
                             Graphic designer by day, amateur DJ by night. 🏳️‍🌈 Living my best life in Brooklyn. Coffee enthusiast, vintage vinyl collector, and always down for a spontaneous gallery hop. Looking for someone to share good vibes and even better tacos with.
                         </p>

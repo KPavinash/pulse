@@ -26,22 +26,23 @@ export default function UserProfilePage() {
     }
 
     return (
-        <div className="min-h-screen w-full bg-black text-white pb-24 overflow-x-hidden relative">
+        <div className="min-h-screen w-full bg-background text-foreground pb-24 overflow-x-hidden relative">
             {/* Background: Blurred Urban Cityscape */}
+            {/* Background: Hidden in Vibrant Theme */}
             <div
-                className="fixed inset-0 z-0 bg-cover bg-center opacity-60 pointer-events-none"
+                className="fixed inset-0 z-0 bg-cover bg-center opacity-60 pointer-events-none hidden dark:block"
                 style={{
                     backgroundImage: "url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop')", // Cityscape placeholder
                     filter: "blur(8px) brightness(0.4)"
                 }}
             />
             {/* Fallback gradient if image fails/loads slow */}
-            <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/80 via-purple-900/20 to-black pointer-events-none" />
+            <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/80 via-purple-900/20 to-black pointer-events-none hidden dark:block" />
 
             {/* Header */}
             <header className="relative z-10 flex justify-between items-center p-6 pt-8">
                 <Link href="/">
-                    <Button size="icon" variant="ghost" className="rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white hover:bg-white/20 shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <Button size="icon" variant="ghost" className="rounded-full bg-[#4e3fd6] dark:bg-white/10 dark:backdrop-blur-md border border-[#5d4ce6] dark:border-white/10 text-white hover:bg-[#5d4ce6] dark:hover:bg-white/20 shadow-md">
                         <ArrowLeft className="w-5 h-5" />
                     </Button>
                 </Link>
@@ -49,7 +50,7 @@ export default function UserProfilePage() {
                     {user.username}
                 </h1>
                 <div className="flex gap-4">
-                    <Button size="icon" variant="ghost" className="rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white hover:bg-white/20 shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <Button size="icon" variant="ghost" className="rounded-full bg-[#4e3fd6] dark:bg-white/10 dark:backdrop-blur-md border border-[#5d4ce6] dark:border-white/10 text-white hover:bg-[#5d4ce6] dark:hover:bg-white/20 shadow-md">
                         <Settings className="w-5 h-5" />
                     </Button>
                 </div>
@@ -79,7 +80,7 @@ export default function UserProfilePage() {
                     {/* Secondary Photos Column */}
                     <div className="flex flex-col gap-4 h-full">
                         {/* Photo 2 */}
-                        <div className="relative flex-1 rounded-[1.5rem] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm group">
+                        <div className="relative flex-1 rounded-[1.5rem] overflow-hidden border border-[#5d4ce6] dark:border-white/10 bg-[#4e3fd6] dark:bg-white/5 dark:backdrop-blur-sm group">
                             <Image
                                 src={user.photos[1]}
                                 alt="Detail Shot"
@@ -88,7 +89,7 @@ export default function UserProfilePage() {
                             />
                         </div>
                         {/* Photo 3 */}
-                        <div className="relative flex-1 rounded-[1.5rem] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm group">
+                        <div className="relative flex-1 rounded-[1.5rem] overflow-hidden border border-[#5d4ce6] dark:border-white/10 bg-[#4e3fd6] dark:bg-white/5 dark:backdrop-blur-sm group">
                             <Image
                                 src={user.photos[2]}
                                 alt="Artistic Shot"
@@ -142,7 +143,7 @@ export default function UserProfilePage() {
                         <Sparkles className="w-5 h-5 text-brand-primary" />
                         <span className="drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]">About Me</span>
                     </h3>
-                    <div className="p-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-gray-300 leading-relaxed shadow-lg">
+                    <div className="p-5 rounded-2xl bg-[#4e3fd6] dark:bg-white/5 dark:backdrop-blur-md border border-[#5d4ce6] dark:border-white/10 text-white/90 dark:text-gray-300 leading-relaxed shadow-lg">
                         <p>
                             {user.bio}
                         </p>

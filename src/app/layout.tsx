@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google"; // Use Inter or another font
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -27,6 +27,8 @@ export const metadata: Metadata = {
 
 import { BottomNav } from "@/components/layout/BottomNav";
 
+import { SplashScreen } from "@/components/layout/SplashScreen";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,13 +36,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, "bg-black text-white antialiased min-h-screen pb-20")}>
+      <body className={cn(outfit.className, "antialiased min-h-screen pb-20")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
         >
+          <SplashScreen />
           {children}
           <BottomNav />
         </ThemeProvider>
